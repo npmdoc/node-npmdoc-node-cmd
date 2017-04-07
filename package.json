@@ -1,17 +1,40 @@
 {
-    "buildNpmdoc":"node-cmd",
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "buildNpmdoc": "node-cmd",
+    "description": "api documentation for [node-cmd (v2.0.0)](https://github.com/RIAEvangelist/node-cmd) [![npm package](https://img.shields.io/npm/v/npmdoc-node-cmd.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-node-cmd) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-node-cmd.svg)](https://travis-ci.org/npmdoc/node-npmdoc-node-cmd)",
     "devDependencies": {
-        "node-cmd": "*",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "node-cmd": "*",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
-    "name":"npmdoc-node-cmd",
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-node-cmd",
+    "keywords": [
+        "documentation",
+        "node-cmd"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_node_cmd.js",
+    "name": "npmdoc-node-cmd",
+    "nameAlias": "npmdoc_node_cmd",
+    "nameOriginal": "npmdoc-node-cmd",
+    "os": [
+        "darwin",
+        "linux"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/npmdoc/node-npmdoc-node-cmd"
     },
     "scripts": {
-        "build-ci": "utility2 shReadmeTest build_ci.sh"
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
     },
     "version": "0.0.1"
 }

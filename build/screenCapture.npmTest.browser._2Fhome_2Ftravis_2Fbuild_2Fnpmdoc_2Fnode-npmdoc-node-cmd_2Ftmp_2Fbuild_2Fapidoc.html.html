@@ -1,0 +1,276 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/RIAEvangelist/node-cmd">node-cmd (v2.0.0)</a>
+</h1>
+<h4>Simple commandline/terminal interface to allow you to run cli or bash style commands as if you were in the terminal.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-cmd">module node-cmd</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-cmd.get">
+            function <span class="apidocSignatureSpan">node-cmd.</span>get
+            <span class="apidocSignatureSpan">(command, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-cmd.run">
+            function <span class="apidocSignatureSpan">node-cmd.</span>run
+            <span class="apidocSignatureSpan">(command)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">node-cmd.</span>commandline</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.node-cmd.commandline">module node-cmd.commandline</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-cmd.commandline.get">
+            function <span class="apidocSignatureSpan">node-cmd.commandline.</span>get
+            <span class="apidocSignatureSpan">(command, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.node-cmd.commandline.run">
+            function <span class="apidocSignatureSpan">node-cmd.commandline.</span>run
+            <span class="apidocSignatureSpan">(command)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-cmd" id="apidoc.module.node-cmd">module node-cmd</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-cmd.get" id="apidoc.element.node-cmd.get">
+        function <span class="apidocSignatureSpan">node-cmd.</span>get
+        <span class="apidocSignatureSpan">(command, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getString(command, callback){
+    //return refrence to the child process
+    return exec(
+        command,
+        (
+            function(){
+                return function(err,data,stderr){
+                    if(!callback)
+                        return;
+
+                    callback(data, err, stderr);
+                }
+            }
+        )(callback)
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+#Examples
+-
+
+```javascript
+
+var cmd=require('node-cmd');
+
+cmd.<span class="apidocCodeKeywordSpan">get</span>(
+    'pwd',
+    function(data){
+        console.log('the current working dir is : ',data)
+    }
+);
+
+cmd.run('touch example.created.file');
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-cmd.run" id="apidoc.element.node-cmd.run">
+        function <span class="apidocSignatureSpan">node-cmd.</span>run
+        <span class="apidocSignatureSpan">(command)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function runCommand(command){
+    //return refrence to the child process
+    return exec(
+        command
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+cmd.get(
+    'pwd',
+    function(data){
+        console.log('the current working dir is : ',data)
+    }
+);
+
+cmd.<span class="apidocCodeKeywordSpan">run</span>('touch example.created.file');
+
+cmd.get(
+    'ls',
+    function(data){
+        console.log('the current dir contains these files :\n\n',data)
+    }
+);
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.node-cmd.commandline" id="apidoc.module.node-cmd.commandline">module node-cmd.commandline</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.node-cmd.commandline.get" id="apidoc.element.node-cmd.commandline.get">
+        function <span class="apidocSignatureSpan">node-cmd.commandline.</span>get
+        <span class="apidocSignatureSpan">(command, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getString(command, callback){
+    exec(
+        command,
+        (
+            function(){
+                return function(err,data,stderr){
+                    callback(data,err,stderr);
+                }
+            }
+        )(callback)
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+#Examples
+-
+
+```javascript
+
+var cmd=require('node-cmd');
+
+cmd.<span class="apidocCodeKeywordSpan">get</span>(
+    'pwd',
+    function(data){
+        console.log('the current working dir is : ',data)
+    }
+);
+
+cmd.run('touch example.created.file');
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.node-cmd.commandline.run" id="apidoc.element.node-cmd.commandline.run">
+        function <span class="apidocSignatureSpan">node-cmd.commandline.</span>run
+        <span class="apidocSignatureSpan">(command)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function runCommand(command){
+    exec(
+        command
+    );
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+cmd.get(
+    'pwd',
+    function(data){
+        console.log('the current working dir is : ',data)
+    }
+);
+
+cmd.<span class="apidocCodeKeywordSpan">run</span>('touch example.created.file');
+
+cmd.get(
+    'ls',
+    function(data){
+        console.log('the current dir contains these files :\n\n',data)
+    }
+);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>

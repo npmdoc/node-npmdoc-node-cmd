@@ -51,7 +51,7 @@
 
         href="https://github.com/RIAEvangelist/node-cmd"
 
-    >node-cmd (v2.0.0)</a>
+    >node-cmd (v3.0.0)</a>
 </h1>
 <h4>Simple commandline/terminal interface to allow you to run cli or bash style commands as if you were in the terminal.</h4>
 <div class="apidocSectionDiv"><a
@@ -132,15 +132,15 @@
                     if(!callback)
                         return;
 
-                    callback(data, err, stderr);
+                    callback(err, data, stderr);
                 }
             }
         )(callback)
     );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-#Examples
--
+
+## Examples
 
 ```javascript
 
@@ -148,7 +148,7 @@ var cmd=require(&#x27;node-cmd&#x27;);
 
 cmd.<span class="apidocCodeKeywordSpan">get</span>(
     &#x27;pwd&#x27;,
-    function(data){
+    function(err, data, stderr){
         console.log(&#x27;the current working dir is : &#x27;,data)
     }
 );
@@ -175,7 +175,7 @@ cmd.run(&#x27;touch example.created.file&#x27;);
     <li>example usage<pre class="apidocCodePre">...
 cmd.get(
     &#x27;pwd&#x27;,
-    function(data){
+    function(err, data, stderr){
         console.log(&#x27;the current working dir is : &#x27;,data)
     }
 );
@@ -184,7 +184,7 @@ cmd.<span class="apidocCodeKeywordSpan">run</span>(&#x27;touch example.created.f
 
 cmd.get(
     &#x27;ls&#x27;,
-    function(data){
+    function(err, data, stderr){
         console.log(&#x27;the current dir contains these files :\n\n&#x27;,data)
     }
 );
@@ -220,8 +220,8 @@ cmd.get(
     );
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-#Examples
--
+
+## Examples
 
 ```javascript
 
@@ -229,7 +229,7 @@ var cmd=require(&#x27;node-cmd&#x27;);
 
 cmd.<span class="apidocCodeKeywordSpan">get</span>(
     &#x27;pwd&#x27;,
-    function(data){
+    function(err, data, stderr){
         console.log(&#x27;the current working dir is : &#x27;,data)
     }
 );
@@ -255,7 +255,7 @@ cmd.run(&#x27;touch example.created.file&#x27;);
     <li>example usage<pre class="apidocCodePre">...
 cmd.get(
     &#x27;pwd&#x27;,
-    function(data){
+    function(err, data, stderr){
         console.log(&#x27;the current working dir is : &#x27;,data)
     }
 );
@@ -264,7 +264,7 @@ cmd.<span class="apidocCodeKeywordSpan">run</span>(&#x27;touch example.created.f
 
 cmd.get(
     &#x27;ls&#x27;,
-    function(data){
+    function(err, data, stderr){
         console.log(&#x27;the current dir contains these files :\n\n&#x27;,data)
     }
 );
